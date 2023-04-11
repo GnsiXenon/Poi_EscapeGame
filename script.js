@@ -16,10 +16,12 @@ let offsetX, offsetY;
 let gap = 50;
 
 function initializePieces() {
-  const pieceWidth = image.width / 3;
-  const pieceHeight = image.height / 5;
-  for (let x = 0; x < 3; x++) {
-    for (let y = 0; y < 5; y++) {
+  let row = 2;
+  let col = 2;
+  const pieceWidth = image.width / row;
+  const pieceHeight = image.height / col;
+  for (let x = 0; x < row; x++) {
+    for (let y = 0; y < col; y++) {
       pieces.push({
         gap : 50,
         x: Math.floor(Math.random() * (canvas.width - pieceWidth)),
@@ -48,14 +50,14 @@ function drawPieces() {
 }
 
 
-// function IsFinish(){
-//   pieces.forEach(function(piece) {
-//     if (piece.block == false) {
-//       return false;
-//     }
-//   });
-//   return true;
-// }
+function IsFinish(){
+  pieces.forEach(function(piece) {
+    if (piece.block === false) {
+      return drawPieces();
+    }
+    return true;
+  });
+}
 
 canvas.addEventListener("mousedown", function(event) { //Fonction qui s'active quand on clique sur la piece 
   const mouseX = event.clientX - canvas.offsetLeft;
@@ -96,12 +98,9 @@ canvas.addEventListener("mouseup", function(event) {
       selectedPiece.x = selectedPiece.imageX + selectedPiece.gap;
       selectedPiece.y = selectedPiece.imageY + selectedPiece.gap;
       selectedPiece.block = true; 
-      // if (IsFinish()) {
-      //   alert("Bravo");
-      // }else{
-      //   drawPieces();
-      // }
-      drawPieces();
+      if (IsFinish()) {
+        alert("Bravo");
+      }
     }
   }
   selectedPiece = null;
