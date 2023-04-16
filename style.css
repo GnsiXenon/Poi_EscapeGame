@@ -1,19 +1,23 @@
+*{
+    margin: 0;
+    overflow: hidden;
+}
+
+
 #nav{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-
-
-  
 #map, #inventory {
     width: 7vw; 
-    height: 13vh;
+    height: auto;
     border-radius: 50%; 
     overflow: hidden;
     border : 1px solid #000;
     cursor: pointer;
+    
 }
     
 .backpack ,.map-img {
@@ -21,7 +25,7 @@
     height: auto; 
     display: block; 
     margin-top: 1vw;
-    margin-left: 2vh;
+    margin-left: 15%;
 }
 
 
@@ -29,37 +33,43 @@
     display: none;
     right: 7vw;
     width: 85vw;
-    height: 45vw;
+    height: 85%;
     border-radius:7vw;
     overflow: hidden;
     border : 3px solid #000;
     z-index: 1;
    flex-direction: column;
    align-items: center;
+   top: 10vh;
+   justify-content: space-around;
 }
 
 
 #allCase{
     margin-top: 5vh;
     width: 70vw;
-    height: 60vh;
-    gap: 1vw;
+    height: auto;
+    gap: 4vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .case{
-    width: 11vw;
-    height: 15vh;
+    width: 8vw;
+    height: 10vh;
     border-radius:1vw;
     overflow: hidden;
     border : 0.2vw solid #000;
+    display: flex;
+    justify-content: center;
 }
 
-.use{
-    border : 0.2vw solid green;
+.notEmpty{
+    cursor: pointer;
 }
+
+
 
 
 #action{
@@ -70,40 +80,39 @@
 }
 
 
-.action{
+.caseAction{
     width: 7vw; 
     height: 13vh; 
     overflow: hidden;
-    border : 1px solid #000;
-border-radius: 100px;
+    border : 0.2vw solid #000;
+border-radius: 2vw;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-.police{
+.textPolice{
     font-family: 'Segoe Script', cursive;
 font-weight: bold;
+font-size: 1vw;
 }
 
-.t{
-    font-size: 1vw;
-    margin-left: 34%;
-    margin-top: 40%;
-}
 
-.e{
-    font-size: 1vw;
-    margin-left: 14%;
-    margin-top: 40%;
-}
-
-.g{
-    font-size: 1vw;
-    margin-left: 3%;
-    margin-top: 40%;
-}
 
 
 .open{
     position: absolute;
     display: flex;
     display: block;
+}
+
+.use{
+    border : 0.2vw solid green;
+}
+
+.blocked{
+    border : 0.2vw solid red;
+    cursor: not-allowed;
+
 }
