@@ -47,11 +47,15 @@ function ActionBtn(){
     document.getElementById("dismantle").classList.add("blocked");
     document.getElementById("examine").disabled = true;
     document.getElementById("examine").classList.add("blocked");
+    document.getElementById("use").disabled = true;
+    document.getElementById("use").classList.add("blocked");
   }else{
     document.getElementById("dismantle").disabled = false;
     document.getElementById("dismantle").classList.remove("blocked");
     document.getElementById("examine").disabled = false;
     document.getElementById("examine").classList.remove("blocked");
+    document.getElementById("use").disabled = false;
+    document.getElementById("use").classList.remove("blocked");
   }
 }
 
