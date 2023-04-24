@@ -1,3 +1,7 @@
+import { start } from "./test.js";
+
+
+
 let itemChoose = 0;
 
 
@@ -32,6 +36,7 @@ caseDivs.forEach(function(caseDiv) {
         caseDiv.classList.add("use");
         itemChoose += 1;
         ActionBtn();
+        start();
       }
       }
        else {
