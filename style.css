@@ -137,9 +137,8 @@ font-size: 1vw;
 
 #puzzle{
     background-color: red;
-    width: 1000px;
-    height: 100px;
-    z-index: -1;
-    position: absolute;
+    width: 2000px;
+    height: 1000px;
     cursor: pointer;
+    z-index: 5;
 }
