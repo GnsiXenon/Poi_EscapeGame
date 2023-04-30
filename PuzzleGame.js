@@ -21,6 +21,16 @@ function start(){
     initializePieces();
     drawPieces();
   };
+
+
+
+  function handleResize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    
+
+  }
   
   //taille de l'image par rapport à la taille du canvas
   image.src = "./img/background/Level_1/House/2.png";
@@ -29,8 +39,8 @@ function start(){
   let selectedPiece = null;
   let offsetX, offsetY;
   let win = false;
-      const row = 5;
-    const col = 5;
+      const row = 2;
+    const col = 2;
   function initializePieces() {
 
     const pieceWidth = image.width / row;

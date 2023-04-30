@@ -1,10 +1,18 @@
 import { start } from "./test.js";
 
+const map = document.getElementById("map");
+const openMap = document.getElementById("openMap");
+
+map.addEventListener("click", function() {
+  if (openMap.style.display === "flex") {
+    openMap.style.display = "none";
+  }else{
+  openMap.style.display = "flex";
+  }});
+
 
 
 let itemChoose = 0;
-
-
 
 const inventory = document.getElementById("inventory");
 const openInv = document.getElementById("openInv");

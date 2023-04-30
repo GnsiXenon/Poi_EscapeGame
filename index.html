@@ -11,9 +11,29 @@
 </head>
 <body>
     <nav id="nav">
-        <div id="map" onclick="test()">
+        <div id="map">
             <img src="./img/cartoon-map-euclidean-vector-tourist-map-vector-map-depositphotos-bgremover.png" class="map-img" alt="map">
         </div>
+        <div id="openMap">
+            <div id="env1" class="box">
+                <img src="/img/background/Level_1/House/1.png" class="imgEnv">
+                <span class="Location">
+                    <p class="textLocation">House</p>
+                </span>
+            </div>
+            <div id="env2" class="box">
+                <img src="/img/background/Level_1/House/2.png" class="imgEnv">
+                <span class="Location">
+                    <p class="textLocation">House</p>
+                </span>
+            </div>
+            <div id="env3" class="box">
+                <img src="/img/background/Level_1/House/3.png" class="imgEnv">
+                <span class="Location">
+                    <p class="textLocation">House</p>
+                </span>
+            </div>
+    </div>
         <div id="inventory">
             <img src="./img/pngwing.com.png" class="backpack" alt="sac">
         </div>
@@ -61,7 +81,7 @@
     <background id="background">
         <img src="./img/background/Level_1/House/2.png" alt="background" id="backgroundImg">
     </background>
-    <game style="display: flex;">
+    <game style="display: none;">
         <puzzle id="puzzle">
 
             <canvas id="Puzzle" width="2000" height="1000"></canvas>
