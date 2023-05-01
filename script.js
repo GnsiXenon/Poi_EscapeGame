@@ -1,14 +1,8 @@
-import { start } from "./test.js";
 
 const map = document.getElementById("map");
 const openMap = document.getElementById("openMap");
 
-map.addEventListener("click", function() {
-  if (openMap.style.display === "flex") {
-    openMap.style.display = "none";
-  }else{
-  openMap.style.display = "flex";
-  }});
+
 
 
 
@@ -17,10 +11,24 @@ let itemChoose = 0;
 const inventory = document.getElementById("inventory");
 const openInv = document.getElementById("openInv");
 
+//afficher la navigation
+map.addEventListener("click", function() {
+
+  if (openMap.style.display === "flex") {
+    openMap.style.display = "none";
+  }else if (openInv.style.display === "none") {
+    console.log("test");
+  openMap.style.display = "flex";
+  }
+  });
+
+
+//afficher l'inventaire
 inventory.addEventListener("click", function() {
   if (openInv.style.display === "flex") {
     openInv.style.display = "none";
-  }else{
+  }else if (openMap.style.display === "none"){
+    console.log("test1");
   openInv.style.display = "flex";
   openInv.style.position = "absolute";
   }
