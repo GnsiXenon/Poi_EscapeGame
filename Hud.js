@@ -1,3 +1,5 @@
+export function createHud (){
+
 // Créer le nav element
 const nav = document.createElement('nav');
 nav.setAttribute('id', 'nav');
@@ -133,3 +135,6 @@ nav.appendChild(openInv);
 
 // Ajout de la navigation au body du document
 document.body.appendChild(nav);
+
+
+}

@@ -1,4 +1,4 @@
-
+import { createHud } from "./Hud.js";
 const map = document.getElementById("map");
 const openMap = document.getElementById("openMap");
 
@@ -16,7 +16,7 @@ map.addEventListener("click", function() {
 
   if (openMap.style.display === "flex") {
     openMap.style.display = "none";
-  }else if (openInv.style.display === "none") {
+  }else{
     console.log("test");
   openMap.style.display = "flex";
   }
@@ -27,7 +27,7 @@ map.addEventListener("click", function() {
 inventory.addEventListener("click", function() {
   if (openInv.style.display === "flex") {
     openInv.style.display = "none";
-  }else if (openMap.style.display === "none"){
+  }else{
     console.log("test1");
   openInv.style.display = "flex";
   openInv.style.position = "absolute";
@@ -102,3 +102,20 @@ caseAction.forEach(function(caseAction) {
       
   });
 });
+
+
+
+
+
+const rightArrow = document.getElementById("rightArrow"); 
+
+
+rightArrow.addEventListener("click", function() {
+  const parentElement = document.body; // Or any other parent element you want to target
+while (parentElement.firstChild) {
+  parentElement.removeChild(parentElement.firstChild);
+}
+  createHud();
+
+});
+
