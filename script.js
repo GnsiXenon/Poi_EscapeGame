@@ -1,4 +1,7 @@
 import { createHud } from "./Hud.js";
+
+export function Script(){
+
 const map = document.getElementById("map");
 const openMap = document.getElementById("openMap");
 
@@ -116,6 +119,7 @@ while (parentElement.firstChild) {
   parentElement.removeChild(parentElement.firstChild);
 }
   createHud();
+  Script();
 
-});
+});}
 

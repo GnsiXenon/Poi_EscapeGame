@@ -1,9 +1,13 @@
+import {Level1} from './Level1.js';
+
 export function DisplayLevel (Level){
-    console.log(Level)
+    const parentElement = document.body; // Or any other parent element you want to target
+    while (parentElement.firstChild) {
+      parentElement.removeChild(parentElement.firstChild);
+    }
     switch (Level){
         case 1:
-            console.log("Level 1")
-            window.location.href = "test.html";
+            Level1();
             break
         case 2:
             console.log("Level 2")

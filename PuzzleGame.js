@@ -1,3 +1,4 @@
+export function PuzzleGame() {
 let launch = false
 
 const puzzleGame = document.getElementById("puzzle");
@@ -326,6 +327,7 @@ function start(){
     selectedPiece = null;
   });
 
+}
 }
 
 //Help : 
