@@ -183,4 +183,9 @@ arrow.appendChild(leftArrow);
 // arrow.appendChild(rightArrow);
 
 document.body.appendChild(arrow);
+
+const game = document.createElement('game');
+game.setAttribute('id','Game')
+game.style.display = 'flex';
+
 }

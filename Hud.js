@@ -81,15 +81,13 @@ allCase.id = "allCase";
 openInv.appendChild(allCase);
 
 // Création des cases de l'inventaire
-for (let i = 0; i <= 14; i++) {
+for (let i = 1; i <= 14; i++) {
   const invCase = document.createElement("div");
   invCase.classList.add("case");
-  console.log(inventory.Length());
   if (i <= inventory.Length()) { //Item dans l'inventaire 
     invCase.classList.add("notEmpty");
     const img = document.createElement("img");
-    img.src = inventory.Image(i - 1);
-    console.log(inventory.Image(i - 1));
+    img.src = inventory.Image(i-1);
     invCase.appendChild(img);
   }
   allCase.appendChild(invCase);

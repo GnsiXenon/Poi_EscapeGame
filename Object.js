@@ -1,25 +1,3 @@
-export class Inventory{
-    Inventory = [];
-    constructor(){
-        this.Inventory = [];
-    }
-    AddObject(Object){
-        this.Inventory.push(Object);
-    }
-    RemoveObject(Object){
-        this.Inventory.splice(this.Inventory.indexOf(Object), 1);
-    }
-
-    Length(){
-        return this.Inventory.length;
-    }
-
-    Image(i){
-        console.log(this.Inventory[i].Image, i);
-        // return this.Inventory[i].image;
-    }
-}
-
 
 export class Object {
     Use = false; //boolean
@@ -72,11 +50,28 @@ export class Object {
         return false , null;
     }
 
-    test(){
-        return this.image;
+}
+
+export class Inventory{
+    Inventory = [];
+    constructor(){
+        this.Inventory = [];
+    }
+    AddObject(Object){
+        this.Inventory.push(Object);
+    }
+    RemoveObject(Object){
+        this.Inventory.splice(this.Inventory.indexOf(Object), 1);
     }
 
+    Length(){
+        return this.Inventory.length;
+    }
 
+    Image(i){
+        console.log(this.Inventory[i].Image, i);
+        return this.Inventory[i].image;
+    }
 }
 
 const PieceDePuzzle = new Object("PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,[], [], [], ["Puzzle"],"")
