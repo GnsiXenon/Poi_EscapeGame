@@ -1,3 +1,26 @@
+export class Inventory{
+    Inventory = [];
+    constructor(){
+        this.Inventory = [];
+    }
+    AddObject(Object){
+        this.Inventory.push(Object);
+    }
+    RemoveObject(Object){
+        this.Inventory.splice(this.Inventory.indexOf(Object), 1);
+    }
+
+    Length(){
+        return this.Inventory.length;
+    }
+
+    Image(i){
+        console.log(this.Inventory[i].Image, i);
+        // return this.Inventory[i].image;
+    }
+}
+
+
 export class Object {
     Use = false; //boolean
     Dismantle = false; //boolean
@@ -9,8 +32,9 @@ export class Object {
     CombineDrop = []; //array
     ObjectUse = []; //array
     ObjectCombine = []; //array
+    Image = ""; //string
 
-    constructor(name, description,use, dismantle, combine, dismantleDrop, combineDrop, objectCombine, objectUse) {
+    constructor(name, description,use, dismantle, combine, dismantleDrop, combineDrop, objectCombine, objectUse, image) {
         this.Name = name;
         this.Description = description;
         this.Use = use;
@@ -20,6 +44,7 @@ export class Object {
         this.CombineDrop = combineDrop;
         this.ObjectCombine = objectCombine;
         this.ObjectUse = objectUse;
+        this.image = image;
        
     }
 
@@ -47,17 +72,35 @@ export class Object {
         return false , null;
     }
 
+    test(){
+        return this.image;
+    }
+
 
 }
 
-const Level1 = [
-    PieceDePuzzle = new Object("PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,[], [], [], ["Puzzle"]),
-    Pile =new Object("Pile", "Une pile de 9V",true, false, true, [], [Télécommande_On], [Télécommande_Off], []),
-    Télecommande = new Object("Télécommande", "Une télécommande pour la télevision ",false, true, false, [Télécommande_Off], [], [], []),
-    Télécommande_Off = new Object("Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, [], [Télécommande_On], [Pile], []),
-    Télécommande_On = new Object("Télécommande", "Une télécommande qui fonctionne ",true, false, false, [], [], [], ["Télévision"]),
-    Ciseaux = new Object("Ciseaux", "Des ciseaux",true, false, false, [], [], [], ["Oreiller"]),
-    Clef = new Object("Clef", "Une clef",true, false, false, [], [], [], ["Maison"]),
+const PieceDePuzzle = new Object("PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,[], [], [], ["Puzzle"],"")
+const Télécommande_Off = new Object("Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, [], ["Télécommande_On"], ["Pile"], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou2-removebg-preview.png") 
+const Télecommande = new Object("Télécommande", "Une télécommande pour la télevision ",false, true, false, ["Télécommande_Off"], [], [], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou-removebg-preview.png")
+const Télécommande_On = new Object("Télécommande", "Une télécommande qui fonctionne ",true, false, false, [], [], [], ["Télévision"],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou3-removebg-preview.png")
+const Pile =new Object("Pile", "Une pile de 9V",true, false, true, [], ["Télécommande_On"], ["Télécommande_Off"], [],"")
+const Ciseaux = new Object("Ciseaux", "Des ciseaux",true, false, false, [], [], [], ["Oreiller"],"")
+const Clef = new Object("Clef", "Une clef",true, false, false, [], [], [], ["Maison"],"")
+export const Level1 = [
+    PieceDePuzzle,
+    Pile,
+    Télecommande,
+    Télécommande_Off,
+    Télécommande_On,
+    Ciseaux,
+    Clef
 ]
 
-            // Name Description Use Dismantle Combine DismantleDrop CombineDrop ObjectCombine ObjectUse
+export const inventory = new Inventory();
+
+inventory.AddObject(Télecommande);
+
+// Name Description Use Dismantle Combine DismantleDrop CombineDrop ObjectCombine ObjectUse
+
+
+

@@ -110,16 +110,5 @@ caseAction.forEach(function(caseAction) {
 
 
 
-const rightArrow = document.getElementById("rightArrow"); 
-
-
-rightArrow.addEventListener("click", function() {
-  const parentElement = document.body; // Or any other parent element you want to target
-while (parentElement.firstChild) {
-  parentElement.removeChild(parentElement.firstChild);
 }
-  createHud();
-  Script();
-
-});}
 

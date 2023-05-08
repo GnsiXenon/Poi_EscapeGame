@@ -3,15 +3,62 @@ let launch = false
 
 const puzzleGame = document.getElementById("puzzle");
 const puzzleImg = document.getElementById("puzzleImg");
+const cross = document.getElementById("cross");
+const Game = document.getElementById("Game");
+const canvas = document.getElementById("Puzzle");
+
+let _IsFinish = false;
+
+function OpenPuzzle(){
+  Game.style.height = "100vh";
+  Game.style.justifyContent = "center";
+  Game.style.alignItems = "center";
+  Game.style.flexDirection = "column";
+  puzzleImg.style.display = "none";
+  puzzleGame.style.height = "480px";
+  puzzleGame.style.width = "720px";
+  puzzleGame.style.margin = "0";
+  cross.style.display = "flex";
+  cross.style.width = "720px";
+  cross.style.justifyContent = "flex-end";
+  canvas.style.display = "block";
+  
+
+}
+
+function ClosePuzzle(){
+  Game.style.height = "";
+  Game.style.justifyContent = "";
+  Game.style.alignItems = "";
+  Game.style.flexDirection = "";
+  cross.style.display = "none";
+  puzzleGame.style.height = "";
+  puzzleGame.style.width = "";
+  puzzleGame.style.margin = "";
+  puzzleImg.style.display = "";
+  canvas.style.display = "none";
+
+
+}
+
+cross.addEventListener("click", function() {
+  if (launch == true) {
+    ClosePuzzle();
+    launch = false;
+  }
+})
+
 
 puzzleGame.addEventListener("click", function() {
   if (launch == false) {
-    puzzleImg.style.display = "none";
-    puzzleGame.style.height = "1000px";
-    puzzleGame.style.width = "2000px";
-    puzzleGame.style.margin = "0";
+    if (_IsFinish == true) {
+      OpenPuzzle();
+      launch = true;
+    }else{
+    OpenPuzzle();
     launch = true;
     start();
+  }
   }
 })
 
@@ -19,21 +66,19 @@ puzzleGame.addEventListener("click", function() {
 
 function start(){
   console.log("start")
-  const canvas = document.getElementById("Puzzle");
   const ctx = canvas.getContext("2d");
 
   const image = new Image();
   image.onload = function() {
-    const scale = Math.min(720 / image.width, 480 / image.height);
-    image.width *= scale;
-    image.height *= scale;
+    // const scale = Math.min(720 / image.width, 480 / image.height);
+    // image.width *= scale;
+    // image.height *= scale;
     initializePieces();
     drawPieces();
     console.log(image.width, image.height)
     puzzleGame.style.height = image.height + "px";
     puzzleGame.style.width = image.width + "px";
-    puzzleGame.style.marginTop = "22vh";
-    puzzleGame.style.marginLeft = "27vw";
+
   };
 
   //taille de l'image par rapport à la taille du canvas
@@ -100,7 +145,7 @@ function start(){
 
   function drawPieces() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2;
     ctx.strokeStyle = "black";
     ctx.strokeRect(0,0,image.width,image.height);
   
@@ -265,6 +310,7 @@ function start(){
         return false;
       }
     };
+    _IsFinish = true;
     return true;
   }
 
@@ -310,8 +356,8 @@ function start(){
     //Checker si la pieces[i] est bien placée
     if (selectedPiece) {
       if (selectedPiece.x >= selectedPiece.imageX  && selectedPiece.x < selectedPiece.imageX + selectedPiece.width && selectedPiece.y >= selectedPiece.imageY && selectedPiece.y < selectedPiece.height + selectedPiece.imageY) {
-        selectedPiece.x = selectedPiece.imageX + selectedPiece.gap+43.2;
-        selectedPiece.y = selectedPiece.imageY + selectedPiece.gap+43.2;
+        selectedPiece.x = selectedPiece.imageX + selectedPiece.gap+19.200000000000003;
+        selectedPiece.y = selectedPiece.imageY + selectedPiece.gap+19.200000000000003;
         console.log(selectedPiece.x, selectedPiece.y,selectedPiece.scaledTabHeight)
         selectedPiece.block = true;
   //put selectedPiece a the start of the array pieces

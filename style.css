@@ -144,6 +144,8 @@ font-size: 1vw;
     z-index: 5;
     margin-left: 30vw;
     margin-top: 75vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #Game{
@@ -197,8 +199,8 @@ top: 45vh;
 }
 
 #cross{
-    width: 10vw;
-    height: 10vw;
     cursor: pointer;
     z-index: 1;
+    display: none;
+    width: fit-content;
 }

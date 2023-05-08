@@ -1,4 +1,9 @@
+import {inventory} from "./Object.js";
+
+
 export function createHud (){
+
+  console.log(inventory);
 
 // Créer le nav element
 const nav = document.createElement('nav');
@@ -76,13 +81,15 @@ allCase.id = "allCase";
 openInv.appendChild(allCase);
 
 // Création des cases de l'inventaire
-for (let i = 1; i <= 14; i++) {
+for (let i = 0; i <= 14; i++) {
   const invCase = document.createElement("div");
   invCase.classList.add("case");
-  if (i <= 2) { //Item dans l'inventaire 
+  console.log(inventory.Length());
+  if (i <= inventory.Length()) { //Item dans l'inventaire 
     invCase.classList.add("notEmpty");
     const img = document.createElement("img");
-    img.src = "./img/pngwing.com.png";
+    img.src = inventory.Image(i - 1);
+    console.log(inventory.Image(i - 1));
     invCase.appendChild(img);
   }
   allCase.appendChild(invCase);
