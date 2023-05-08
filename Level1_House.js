@@ -52,12 +52,19 @@ puzzle.appendChild(imgPuzzle);
 
 const canvas = document.createElement('canvas');
 canvas.setAttribute('id', 'Puzzle');
-canvas.setAttribute('width', '2000');
-canvas.setAttribute('height', '1000');
+canvas.setAttribute('width', '3000');
+canvas.setAttribute('height', '1500');
 
 
 puzzle.appendChild(canvas);
 game.appendChild(puzzle);
+
+const cross = document.createElement('cross');
+cross.setAttribute('id', 'cross');
+cross.setAttribute('class', 'fas fa-times fa-3x');
+
+game.appendChild(cross);
+
 
 document.body.appendChild(game);
 }

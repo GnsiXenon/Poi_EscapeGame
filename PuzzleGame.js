@@ -18,21 +18,26 @@ puzzleGame.addEventListener("click", function() {
 
 
 function start(){
+  console.log("start")
   const canvas = document.getElementById("Puzzle");
   const ctx = canvas.getContext("2d");
 
   const image = new Image();
   image.onload = function() {
+    const scale = Math.min(720 / image.width, 480 / image.height);
+    image.width *= scale;
+    image.height *= scale;
     initializePieces();
     drawPieces();
+    console.log(image.width, image.height)
     puzzleGame.style.height = image.height + "px";
     puzzleGame.style.width = image.width + "px";
-    puzzleGame.style.marginTop = "25vh";
-    puzzleGame.style.marginLeft = "25vw";
+    puzzleGame.style.marginTop = "22vh";
+    puzzleGame.style.marginLeft = "27vw";
   };
 
   //taille de l'image par rapport à la taille du canvas
-  image.src = "./img/thumb-1920-575608(1).jpg";
+  image.src = "./img/thumb-1920-575608.jpg";
 
   const pieces = [];
   let selectedPiece = null;
@@ -95,9 +100,10 @@ function start(){
 
   function drawPieces() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 2;
-      ctx.strokeStyle = "black";
-      ctx.strokeRect(0,0,image.width,image.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0,0,image.width,image.height);
+  
 
     for(let i = 0; i < pieces.length; i++) {
 
@@ -228,8 +234,11 @@ function start(){
 			Math.min(image.width/col,
 				image.height/row)*tabHeight/sz;
 
+      pieces.scaledTabHeight = scaledTabHeight;
+ 
       pieces[i].imageX=pieces[i].j*image.width/col-scaledTabHeight;
       pieces[i].imageY=pieces[i].i*image.height/row-scaledTabHeight;
+      
       ctx.drawImage(image,
         pieces[i].imageX,
         pieces[i].imageY,
@@ -241,10 +250,7 @@ function start(){
         pieces[i].height+2*tabHeight);
       ctx.restore();
       ctx.stroke();
-
-
-
-      // Dessine les bordures
+ // Dessine les bordures
     }
   }
 
@@ -304,8 +310,9 @@ function start(){
     //Checker si la pieces[i] est bien placée
     if (selectedPiece) {
       if (selectedPiece.x >= selectedPiece.imageX  && selectedPiece.x < selectedPiece.imageX + selectedPiece.width && selectedPiece.y >= selectedPiece.imageY && selectedPiece.y < selectedPiece.height + selectedPiece.imageY) {
-        selectedPiece.x = selectedPiece.imageX + selectedPiece.gap;
-        selectedPiece.y = selectedPiece.imageY + selectedPiece.gap;
+        selectedPiece.x = selectedPiece.imageX + selectedPiece.gap+43.2;
+        selectedPiece.y = selectedPiece.imageY + selectedPiece.gap+43.2;
+        console.log(selectedPiece.x, selectedPiece.y,selectedPiece.scaledTabHeight)
         selectedPiece.block = true;
   //put selectedPiece a the start of the array pieces
         pieces.splice(pieces.indexOf(selectedPiece), 1);
