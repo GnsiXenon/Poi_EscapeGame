@@ -1,4 +1,6 @@
 import { createHud } from "./Hud.js";
+import { Script } from "./script.js";
+import { PuzzleGame } from './PuzzleGame.js';
 
 
 export function ChildrenBedroom (){
@@ -36,6 +38,7 @@ rightArrow.setAttribute('id', 'rightArrow');
 //ajoute un event listener sur le rightArrow
 rightArrow.addEventListener("click", function() {
     LivingRoom();
+    Script();
 });
 
 
@@ -117,6 +120,8 @@ leftArrow.setAttribute('id', 'leftArrow');
 //ajoute un event listener sur le leftArrow
 leftArrow.addEventListener("click", function() {
     ChildrenBedroom();
+    Script();
+    PuzzleGame();
 });
 
 const rightArrow = document.createElement("i")
@@ -125,6 +130,7 @@ rightArrow.setAttribute('id', 'rightArrow');
 //ajoute un event listener sur le rightArrow
 rightArrow.addEventListener("click", function() {
     MasterBedroom();
+    Script();
 });
 
 
@@ -171,6 +177,7 @@ leftArrow.setAttribute('id', 'leftArrow');
 //ajoute un event listener sur le leftArrow
 leftArrow.addEventListener("click", function() {
     LivingRoom();
+    Script();
 });
 
 

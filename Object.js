@@ -78,7 +78,7 @@ const PieceDePuzzle = new Object("PieceDePuzzle", "Il doit manquer une piece de 
 const Télécommande_Off = new Object("Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, [], ["Télécommande_On"], ["Pile"], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou2-removebg-preview.png") 
 const Télecommande = new Object("Télécommande", "Une télécommande pour la télevision ",false, true, false, ["Télécommande_Off"], [], [], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou-removebg-preview.png")
 const Télécommande_On = new Object("Télécommande", "Une télécommande qui fonctionne ",true, false, false, [], [], [], ["Télévision"],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou3-removebg-preview.png")
-const Pile =new Object("Pile", "Une pile de 9V",true, false, true, [], ["Télécommande_On"], ["Télécommande_Off"], [],"")
+const Pile =new Object("Pile", "Une pile de 9V",true, false, true, [], ["Télécommande_On"], ["Télécommande_Off"], [],"./img/object/Pile/batteries-2109241_960_720.webp")
 const Ciseaux = new Object("Ciseaux", "Des ciseaux",true, false, false, [], [], [], ["Oreiller"],"")
 const Clef = new Object("Clef", "Une clef",true, false, false, [], [], [], ["Maison"],"")
 export const Level1 = [
@@ -93,7 +93,10 @@ export const Level1 = [
 
 export const inventory = new Inventory();
 
-inventory.AddObject(Télecommande);
+// inventory.AddObject(Télecommande);
+// inventory.AddObject(Télécommande_Off);
+// inventory.AddObject(Télécommande_On);
+// inventory.AddObject(Pile);
 
 // Name Description Use Dismantle Combine DismantleDrop CombineDrop ObjectCombine ObjectUse
 

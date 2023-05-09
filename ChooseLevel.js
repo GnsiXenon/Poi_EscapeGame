@@ -6,7 +6,7 @@ export function DisplayLevel (Level){
     }
     switch (Level){
         case 1:
-            location.href = "test.html"
+            location.href = "Level1.html"
             break
         case 2:
             console.log("Level 2")
