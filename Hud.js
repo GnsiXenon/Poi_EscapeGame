@@ -1,10 +1,11 @@
 import {inventory} from "./Object.js";
+import { removeInHand } from "./script.js";
 
 
 export function createHud (){
 
-  console.log(inventory);
 
+ 
 // Créer le nav element
 const nav = document.createElement('nav');
 nav.setAttribute('id', 'nav');
@@ -31,12 +32,13 @@ openMapDiv.setAttribute('id', 'openMap');
 
 // Créer les trois environnements
 for (let i = 1; i <= 3; i++) {
+  let text = ["House","Court","Warehouse"]
   const envDiv = document.createElement('div');
   envDiv.setAttribute('id', `env${i}`);
   envDiv.setAttribute('class', 'box');
 
   const imgEnv = document.createElement('img');
-  imgEnv.setAttribute('src', `/img/background/Level_1/House/${i}.png`);
+  imgEnv.setAttribute('src', `/img/background/Level_1/Map/${i}.png`);
   imgEnv.setAttribute('class', 'imgEnv');
 
   const spanLoc = document.createElement('span');
@@ -44,7 +46,7 @@ for (let i = 1; i <= 3; i++) {
 
   const pLoc = document.createElement('p');
   pLoc.setAttribute('class', 'textLocation');
-  pLoc.textContent = 'House';
+  pLoc.textContent = text[i-1];
 
   spanLoc.appendChild(pLoc);
   envDiv.appendChild(imgEnv);
@@ -86,6 +88,7 @@ for (let i = 1; i <= 14; i++) {
   invCase.classList.add("case");
   if (i <= inventory.Length()) { //Item dans l'inventaire 
     invCase.classList.add("notEmpty");
+    invCase.setAttribute("id",inventory.Id(i-1));
     const img = document.createElement("img");
     img.src = inventory.Image(i-1);
     invCase.appendChild(img);
@@ -107,6 +110,7 @@ useText.classList.add("textPolice");
 useText.textContent = "USE";
 use.appendChild(useText);
 action.appendChild(use);
+
 
 const combine = document.createElement("div");
 combine.id = "combine";
@@ -138,8 +142,51 @@ action.appendChild(examine);
 // Ajout de la div contenant l'inventaire à la navigation
 nav.appendChild(openInv);
 
+
 // Ajout de la navigation au body du document
 document.body.appendChild(nav);
 
-
+ItemUse();
 }
+
+
+export function ItemUse(img=null){
+  if (document.getElementById("UseItem") != null) {
+    document.getElementById("UseItem").remove();
+  }
+
+  const UseItem = document.createElement('div');
+UseItem.setAttribute('id',"UseItem");
+UseItem.setAttribute('class',"UseItem");
+
+const cross = document.createElement('cross');
+cross.setAttribute('id', 'crossItem');
+cross.setAttribute('class', 'fas fa-times fa-1x');
+cross.style.position = "absolute";
+cross.style.cursor = "pointer";
+cross.style.top = "0";
+cross.style.left = "3vw";
+cross.style.color = "red";
+
+cross.addEventListener("click", function() {
+  UseItem.style.display = "none";
+  removeInHand();
+});
+
+UseItem.appendChild(cross);
+
+const divimgUseItem = document.createElement('div');
+divimgUseItem.setAttribute('id', 'divimgUseItem');
+divimgUseItem.style.display = "flex";
+divimgUseItem.style.border = "solid 1px black";
+divimgUseItem.style.borderRadius = "50%";
+
+const imgUseItem = document.createElement('img');
+imgUseItem.setAttribute('src', img);
+imgUseItem.setAttribute('class', 'imgUseItem');
+
+divimgUseItem.appendChild(imgUseItem);
+UseItem.appendChild(divimgUseItem);
+nav.appendChild(UseItem);
+}
+

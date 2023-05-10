@@ -1,10 +1,25 @@
 import { createHud } from "./Hud.js";
-import { Script } from "./script.js";
-import { PuzzleGame } from './PuzzleGame.js';
+import { ScriptHud } from "./script.js";
+import {inventory as _inventory,Level1} from "./Object.js";
+import { RefreshPage } from "./script.js";
+
+export let actualRoom = "";
+let tc = false;
+let pile = false;
+
+/*
 
 
+
+CHildrenBedroom
+
+
+
+
+
+*/
 export function ChildrenBedroom (){
-console.log("ChildrenBedroom")
+actualRoom = "ChildrenBedroom"
 
 const parentElement = document.body; // Or any other parent element you want to target
 while (parentElement.firstChild) {
@@ -38,7 +53,6 @@ rightArrow.setAttribute('id', 'rightArrow');
 //ajoute un event listener sur le rightArrow
 rightArrow.addEventListener("click", function() {
     LivingRoom();
-    Script();
 });
 
 
@@ -84,13 +98,20 @@ game.appendChild(puzzle);
 
 
 document.body.appendChild(game);
+ScriptHud();
 }
 
 
+/*
 
+
+LivingRoom
+
+
+*/
 
 export function LivingRoom (){
-    console.log("LivingRoom")
+    actualRoom = "LivingRoom"
     const parentElement = document.body; // Or any other parent element you want to target
 while (parentElement.firstChild) {
     parentElement.removeChild(parentElement.firstChild);
@@ -120,8 +141,6 @@ leftArrow.setAttribute('id', 'leftArrow');
 //ajoute un event listener sur le leftArrow
 leftArrow.addEventListener("click", function() {
     ChildrenBedroom();
-    Script();
-    PuzzleGame();
 });
 
 const rightArrow = document.createElement("i")
@@ -130,24 +149,38 @@ rightArrow.setAttribute('id', 'rightArrow');
 //ajoute un event listener sur le rightArrow
 rightArrow.addEventListener("click", function() {
     MasterBedroom();
-    Script();
 });
 
 
 arrow.appendChild(leftArrow);
 arrow.appendChild(rightArrow);
+document.body.appendChild(arrow)
 
-document.body.appendChild(arrow);
+
+telecommande();
+Tv();
+
+
+
+
+
+ScriptHud();
 }
 
 
+/*
+
+
+MasterBedroom
 
 
 
+*/
 
-function MasterBedroom (){
 
-    console.log("MasterBedroom")
+
+export function MasterBedroom (){
+    actualRoom = "MasterBedroom"
     const parentElement = document.body; // Or any other parent element you want to target
 while (parentElement.firstChild) {
     parentElement.removeChild(parentElement.firstChild);
@@ -177,7 +210,6 @@ leftArrow.setAttribute('id', 'leftArrow');
 //ajoute un event listener sur le leftArrow
 leftArrow.addEventListener("click", function() {
     LivingRoom();
-    Script();
 });
 
 
@@ -194,5 +226,64 @@ document.body.appendChild(arrow);
 const game = document.createElement('game');
 game.setAttribute('id','Game')
 game.style.display = 'flex';
+
+document.body.appendChild(game);
+Pile();
+
+ScriptHud();
+}
+
+
+function telecommande(){
+    if (tc == false){ 
+    const telecommande = document.createElement('telecommande');
+telecommande.setAttribute('id', 'telecommande');
+const imgTelecommande = document.createElement('img');
+imgTelecommande.setAttribute('id', 'telecommandeImg');
+imgTelecommande.setAttribute('src', './img/object/telecommande/T-l-commande-pour-LG-3D-smart-LCD-TV-nouveaut.jpg_Q90.jpg_-removebg-preview.png');
+
+telecommande.appendChild(imgTelecommande);
+
+imgTelecommande.addEventListener("click", function() {
+    _inventory.AddObject(Level1.find(element => element.Id == "Télecommande"));
+    telecommande.style.display = "none";
+    tc = true
+    RefreshPage();
+});
+
+document.body.appendChild(telecommande);
+    }
+}
+
+function Pile(){
+    if (pile == false){ 
+    const pile = document.createElement('pile');
+pile.setAttribute('id', 'pile');
+const imgPile = document.createElement('img');
+imgPile.setAttribute('id', 'pileImg');
+imgPile.setAttribute('src', './img/object/Pile/batteries-2109241_960_720.png');
+
+pile.appendChild(imgPile);
+
+imgPile.addEventListener("click", function() {
+    _inventory.AddObject(Level1.find(element => element.Id == "Pile"));
+    pile.style.display = "none";
+    pile = true
+    RefreshPage();
+
+});
+
+document.body.appendChild(pile);
+
+    }
+
+}
+
+
+function Tv(){
+    const tv = document.createElement('tv');
+tv.setAttribute('id', 'tv');
+document.body.appendChild(tv);
+
 
 }

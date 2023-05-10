@@ -1,18 +1,20 @@
-
+import { PuzzleGame } from './PuzzleGame.js';
 export class Object {
+    Id =""
     Use = false; //boolean
     Dismantle = false; //boolean
     Combine = false; //boolean
     Examine = true; //boolean
     Description = ""; //string
     Name = ""; //string
-    DismantleDrop = []; //array
-    CombineDrop = []; //array
-    ObjectUse = []; //array
-    ObjectCombine = []; //array
+    DismantleDrop = ""; //array
+    CombineDrop = ""; //array
+    ObjectUse = ""; //array
+    ObjectCombine = ""; //array
     Image = ""; //string
 
-    constructor(name, description,use, dismantle, combine, dismantleDrop, combineDrop, objectCombine, objectUse, image) {
+    constructor(id,name, description,use, dismantle, combine, dismantleDrop, combineDrop, objectCombine, objectUse, image) {
+        this.Id = id;
         this.Name = name;
         this.Description = description;
         this.Use = use;
@@ -27,60 +29,122 @@ export class Object {
     }
 
 
-    DismantleObject() {
-        if (this.Dismantle == true) {
-            return true, this.DismantleDrop;
-        }
-        return false , null;
-    }
-
-
-    UseObject(Object) {
-        if (this.Use == true && this.ObjectUse.includes(Object)) {
-            return true
-        }
-        return false;
-    }
-
-
-    CombineObject(Object) {
-        if (this.Combine == true && this.ObjectCombine.includes(Object)) {
-            return true , this.CombineDrop;
-        }
-        return false , null;
-    }
+   
 
 }
 
 export class Inventory{
-    Inventory = [];
+    _Inventory = []
     constructor(){
-        this.Inventory = [];
+        this._Inventory = []
     }
     AddObject(Object){
-        this.Inventory.push(Object);
+        this._Inventory.push(Object);
     }
     RemoveObject(Object){
-        this.Inventory.splice(this.Inventory.indexOf(Object), 1);
+        this._Inventory.splice(this._Inventory.indexOf(Object), 1);
     }
 
     Length(){
-        return this.Inventory.length;
+        return this._Inventory.length;
+    }
+
+    get (){
+        return this._Inventory;
     }
 
     Image(i){
-        console.log(this.Inventory[i].Image, i);
-        return this.Inventory[i].image;
+        return this._Inventory[i].image;
+    }
+
+    Id(i){
+        return this._Inventory[i].Id;
+    }
+
+
+    CombineObject(Object1,Object2){
+        const _Object1 = this._Inventory.find(element => element.Id == Object1);
+        const _Object2 = this._Inventory.find(element => element.Id == Object2);
+         if (_Object1.ObjectCombine == _Object2.Id && _Object2.ObjectCombine == _Object1.Id){
+            this.RemoveObject(_Object1);
+            this.RemoveObject(_Object2);
+            console.log(Level1)
+            for (let i = 0; i < Level1.length; i++) {
+                if (Level1[i].Id == _Object1.CombineDrop) {
+                    this.AddObject(Level1[i]);
+                    }
+                }
+         }else{
+            alert("Vous ne pouvez pas combiner ces deux objets");
+         }
+}
+
+    ItemUse(inHand,IdDiv){
+
+        DivDynamic.forEach(element => {
+            if (element == IdDiv) {
+                const _Object = this._Inventory.find(element => element.Id == inHand);
+                        console.log(_Object)
+                        if (_Object.Use == true){
+                            if (_Object.ObjectUse == IdDiv){
+                                this.RemoveObject(_Object);
+                                switch (IdDiv) {
+                                    case "Télévision":
+                                        alert("Vous avez gagné");
+                                        break;
+                                    case "Oreiller":
+                                        break;
+                                    case "Maison":
+                                        break;
+                                    case "puzzleImg":
+                                        PuzzleGame();
+                                        document.getElementById("UseItem").style.display = "none";
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                });
+    }
+            
+ 
+        
+
+        
+    
+
+
+
+
+    DismantleObject(Object){
+        const _Object = this._Inventory.find(element => element.Id == Object);
+        if (_Object.Dismantle == true){
+            this.RemoveObject(_Object);
+            for (let i = 0; i < Level1.length; i++) {
+                if (Level1[i].Id == _Object.DismantleDrop) {
+                    this.AddObject(Level1[i]);
+                    }
+                }
+        }else{
+            alert("Vous ne pouvez pas démonter cet objet");
+        }
+    }
+
+    ExamineObject(Object){
+        const _Object = this._Inventory.find(element => element.Id == Object);
+        alert("Object : "+ _Object.Name +" | Description : "+ _Object.Description);
     }
 }
 
-const PieceDePuzzle = new Object("PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,[], [], [], ["Puzzle"],"")
-const Télécommande_Off = new Object("Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, [], ["Télécommande_On"], ["Pile"], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou2-removebg-preview.png") 
-const Télecommande = new Object("Télécommande", "Une télécommande pour la télevision ",false, true, false, ["Télécommande_Off"], [], [], [],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou-removebg-preview.png")
-const Télécommande_On = new Object("Télécommande", "Une télécommande qui fonctionne ",true, false, false, [], [], [], ["Télévision"],"./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou3-removebg-preview.png")
-const Pile =new Object("Pile", "Une pile de 9V",true, false, true, [], ["Télécommande_On"], ["Télécommande_Off"], [],"./img/object/Pile/batteries-2109241_960_720.webp")
-const Ciseaux = new Object("Ciseaux", "Des ciseaux",true, false, false, [], [], [], ["Oreiller"],"")
-const Clef = new Object("Clef", "Une clef",true, false, false, [], [], [], ["Maison"],"")
+const DivDynamic = ["puzzleImg"]
+
+const PieceDePuzzle = new Object("PieceDePuzzle","PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,"", '', "", "puzzleImg","./img/object/PieceDePuzzle/768px-Puzzle.svg.png")
+const Télécommande_Off = new Object("Télécommande_Off","Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, "", "Télécommande_On", "Pile", "","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou2-removebg-preview.png") 
+const Télecommande = new Object("Télecommande","Télécommande", "Une télécommande pour la télevision ",false, true, false, "Télécommande_Off", "", "", "","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou-removebg-preview.png")
+const Télécommande_On = new Object("Télécommande_On","Télécommande", "Une télécommande qui fonctionne ",true, false, false, "", "", "", "Télévision","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou3-removebg-preview.png")
+const Pile =new Object("Pile","Pile", "Une pile de 9V",true, false, true, "", "Télécommande_On", "Télécommande_Off", "","./img/object/Pile/batteries-2109241_960_720.png")
+const Ciseaux = new Object("Ciseaux","Ciseaux", "Des ciseaux",true, false, false, "", "", "", "Oreiller","./img/object/Ciseaux/14503.png")
+const Clef = new Object("Clef","Clef", "Une clef",true, false, false, "", "", "", "Maison","./img/object/Clef/14080.png")
 export const Level1 = [
     PieceDePuzzle,
     Pile,
@@ -93,10 +157,9 @@ export const Level1 = [
 
 export const inventory = new Inventory();
 
-// inventory.AddObject(Télecommande);
-// inventory.AddObject(Télécommande_Off);
-// inventory.AddObject(Télécommande_On);
+
 // inventory.AddObject(Pile);
+
 
 // Name Description Use Dismantle Combine DismantleDrop CombineDrop ObjectCombine ObjectUse
 

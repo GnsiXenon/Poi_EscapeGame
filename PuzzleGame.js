@@ -50,6 +50,7 @@ cross.addEventListener("click", function() {
 
 
 puzzleGame.addEventListener("click", function() {
+  
   if (launch == false) {
     if (_IsFinish == true) {
       OpenPuzzle();
@@ -370,7 +371,7 @@ function start(){
         //timer de 1 seconde
         setTimeout(function(){
           win = true;
-          alert("Bravo !")
+          alert("Bravo !  le code c'est 4937")
         }, 50);
     }
     selectedPiece = null;
