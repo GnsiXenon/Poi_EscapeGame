@@ -1,11 +1,11 @@
 
 export function DisplayLevel (Level){
-    const parentElement = document.body; // Or any other parent element you want to target
+    switch (Level){
+        case 1:
+            const parentElement = document.body; // Or any other parent element you want to target
     while (parentElement.firstChild) {
       parentElement.removeChild(parentElement.firstChild);
     }
-    switch (Level){
-        case 1:
             location.href = "Level1.html"
             break
         case 2:

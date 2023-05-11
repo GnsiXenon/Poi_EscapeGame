@@ -74,7 +74,3 @@ Vous pouvez vous balader entre différente map en cliquant sur les flèches de d
 * [HTML](https://developer.mozilla.org/fr/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/fr/docs/Web/CSS)
 * [JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
-
-
-
-

@@ -66,7 +66,6 @@ puzzleGame.addEventListener("click", function() {
 
 
 function start(){
-  console.log("start")
   const ctx = canvas.getContext("2d");
 
   const image = new Image();
@@ -76,7 +75,6 @@ function start(){
     // image.height *= scale;
     initializePieces();
     drawPieces();
-    console.log(image.width, image.height)
     puzzleGame.style.height = image.height + "px";
     puzzleGame.style.width = image.width + "px";
 
@@ -141,7 +139,6 @@ function start(){
         cnt++;
       }
     }
-    console.log(pieces)
   }
 
   function drawPieces() {
@@ -359,7 +356,6 @@ function start(){
       if (selectedPiece.x >= selectedPiece.imageX  && selectedPiece.x < selectedPiece.imageX + selectedPiece.width && selectedPiece.y >= selectedPiece.imageY && selectedPiece.y < selectedPiece.height + selectedPiece.imageY) {
         selectedPiece.x = selectedPiece.imageX + selectedPiece.gap+19.200000000000003;
         selectedPiece.y = selectedPiece.imageY + selectedPiece.gap+19.200000000000003;
-        console.log(selectedPiece.x, selectedPiece.y,selectedPiece.scaledTabHeight)
         selectedPiece.block = true;
   //put selectedPiece a the start of the array pieces
         pieces.splice(pieces.indexOf(selectedPiece), 1);

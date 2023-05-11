@@ -4,6 +4,7 @@ import { actualRoom} from "./Level1_House.js";
 import { ChildrenBedroom } from "./Level1_House.js";
 import { LivingRoom } from "./Level1_House.js";
 import { MasterBedroom } from "./Level1_House.js";
+import { Library,CourtOffice,BreakRoom } from "./Level1_House.js";
 import {ItemUse} from "./Hud.js"
 
 
@@ -61,7 +62,6 @@ function OpenInv(){
     (game != null)?game.classList.remove("blur"):null;
     map.classList.remove("blur");
   }else{
-    console.log("test1");
     background.classList.add("blur");
     arrow.classList.add("blur");
     (game != null)?game.classList.add("blur"):null;
@@ -74,6 +74,8 @@ function OpenInv(){
 
 
 
+
+
 const caseDivs = document.querySelectorAll(".case");
 
 caseDivs.forEach(function(caseDiv) {
@@ -82,7 +84,6 @@ caseDivs.forEach(function(caseDiv) {
     if (imgElement) {
       if (caseDiv.classList.contains("use")) {
         itemChoose.splice(itemChoose.indexOf(caseDiv.getAttribute("id")), 1);
-        console.log(itemChoose,'remove');
         caseDiv.classList.remove("use");
         ActionBtn();
       }else{
@@ -93,7 +94,6 @@ caseDivs.forEach(function(caseDiv) {
         }else{
           alert("Vous ne pouvez pas choisir plus de deux objets");
         }
-        console.log(itemChoose,'add');
       }
       }
        else {
@@ -164,7 +164,7 @@ let elements = document.querySelectorAll('*');
 // Ajouter un écouteur d'événements "click" à chaque élément
 elements.forEach(function(element) {
   element.addEventListener('click', function(event) {
-    console.log(event.target.id);
+    // console.log(event.target.id, inHand);
     _inventory.ItemUse(inHand, event.target.id);
   });
 });
@@ -188,6 +188,29 @@ export function RefreshPage() {
       break;
     case "LivingRoom":
       LivingRoom();
+      break;
+    case "Library":
+      Library();
+      break;
+    case "CourtOffice":
+      CourtOffice();
+      break;
+    case "BreakRoom":
+      BreakRoom();
+      break;
+  }
+}
+
+export function changeMap(i){
+  switch (i) {
+    case 1:
+      LivingRoom();
+      break;
+    case 2:
+      Library();
+      break;
+    case 3:
+      alert("Vous ne pouvez pas aller ici (WIP)");
       break;
   }
 }

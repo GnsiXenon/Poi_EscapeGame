@@ -5,7 +5,8 @@ import { RefreshPage } from "./script.js";
 
 export let actualRoom = "";
 let tc = false;
-let pile = false;
+let _pile = false;
+let _ciseaux = false;
 
 /*
 
@@ -223,13 +224,168 @@ arrow.appendChild(leftArrow);
 
 document.body.appendChild(arrow);
 
-const game = document.createElement('game');
-game.setAttribute('id','Game')
-game.style.display = 'flex';
 
-document.body.appendChild(game);
 Pile();
 
+ScriptHud();
+}
+
+
+
+export function CourtOffice(){
+    actualRoom = "CourtOffice"
+    const parentElement = document.body; // Or any other parent element you want to target
+while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+}
+
+createHud();
+
+
+const background = document.createElement('background');
+background.setAttribute('id', 'background');
+
+const imgBackground = document.createElement('img');
+imgBackground.setAttribute('src', './img/background/Level_1/Tribunal/2.png');
+imgBackground.setAttribute('id', 'backgroundImg');
+
+background.appendChild(imgBackground);
+
+document.body.appendChild(background);
+
+const arrow = document.createElement('arrow');
+arrow.setAttribute('id', 'arrow');
+
+
+const leftArrow = document.createElement("i")
+leftArrow.setAttribute('class', 'fas fa-arrow-left fa-4x');
+leftArrow.setAttribute('id', 'leftArrow');
+//ajoute un event listener sur le leftArrow
+leftArrow.addEventListener("click", function() {
+    Library();
+});
+
+
+const rightArrow = document.createElement("i")
+rightArrow.setAttribute('class', 'fas fa-arrow-right fa-4x');
+rightArrow.setAttribute('id', 'rightArrow');
+
+rightArrow.addEventListener("click", function() {
+    BreakRoom();
+});
+
+arrow.appendChild(leftArrow);
+arrow.appendChild(rightArrow);
+
+document.body.appendChild(arrow);
+
+Ciseaux();
+
+ScriptHud();
+}
+
+
+
+
+export function Library(){
+    actualRoom = "Library"
+    const parentElement = document.body; // Or any other parent element you want to target
+while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+}
+
+createHud();
+
+
+const background = document.createElement('background');
+background.setAttribute('id', 'background');
+
+const imgBackground = document.createElement('img');
+imgBackground.setAttribute('src', './img/background/Level_1/Tribunal/1.png');
+imgBackground.setAttribute('id', 'backgroundImg');
+
+background.appendChild(imgBackground);
+
+document.body.appendChild(background);
+const arrow = document.createElement('arrow');
+arrow.setAttribute('id', 'arrow');
+
+
+const leftArrow = document.createElement("i")
+// leftArrow.setAttribute('class', 'fas fa-arrow-left fa-4x');
+// leftArrow.setAttribute('id', 'leftArrow');
+
+const rightArrow = document.createElement("i")
+rightArrow.setAttribute('class', 'fas fa-arrow-right fa-4x');
+rightArrow.setAttribute('id', 'rightArrow');
+//ajoute un event listener sur le rightArrow
+rightArrow.addEventListener("click", function() {
+    CourtOffice();
+});
+
+
+arrow.appendChild(leftArrow);
+arrow.appendChild(rightArrow);
+
+
+arrow.appendChild(rightArrow);
+
+document.body.appendChild(arrow);
+
+
+ScriptHud();
+}
+
+export function BreakRoom(){
+    actualRoom = "BreakRoom"
+    const parentElement = document.body; // Or any other parent element you want to target
+while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+}
+
+createHud();
+
+
+const background = document.createElement('background');
+background.setAttribute('id', 'background');
+
+const imgBackground = document.createElement('img');
+imgBackground.setAttribute('src', './img/background/Level_1/Tribunal/3.png');
+imgBackground.setAttribute('id', 'backgroundImg');
+
+background.appendChild(imgBackground);
+
+document.body.appendChild(background);
+
+const arrow = document.createElement('arrow');
+arrow.setAttribute('id', 'arrow');
+
+
+const leftArrow = document.createElement("i")
+leftArrow.setAttribute('class', 'fas fa-arrow-left fa-4x');
+leftArrow.setAttribute('id', 'leftArrow');
+//ajoute un event listener sur le leftArrow
+leftArrow.addEventListener("click", function() {
+    CourtOffice();
+});
+
+
+// const rightArrow = document.createElement("i")
+// rightArrow.setAttribute('class', 'fas fa-arrow-right fa-4x');
+// rightArrow.setAttribute('id', 'rightArrow');
+
+// rightArrow.addEventListener("click", function() {
+//     
+// });
+
+
+arrow.appendChild(leftArrow);
+// arrow.appendChild(rightArrow);
+
+document.body.appendChild(arrow);
+
+
+Oreiller ();
 ScriptHud();
 }
 
@@ -256,7 +412,7 @@ document.body.appendChild(telecommande);
 }
 
 function Pile(){
-    if (pile == false){ 
+    if (_pile == false){ 
     const pile = document.createElement('pile');
 pile.setAttribute('id', 'pile');
 const imgPile = document.createElement('img');
@@ -268,7 +424,7 @@ pile.appendChild(imgPile);
 imgPile.addEventListener("click", function() {
     _inventory.AddObject(Level1.find(element => element.Id == "Pile"));
     pile.style.display = "none";
-    pile = true
+    _pile = true
     RefreshPage();
 
 });
@@ -279,11 +435,37 @@ document.body.appendChild(pile);
 
 }
 
+function Ciseaux(){
+    if (_ciseaux == false){
+    const ciseaux = document.createElement('ciseaux');
+ciseaux.setAttribute('id', 'ciseaux');
+const imgCiseaux = document.createElement('img');
+imgCiseaux.setAttribute('id', 'ciseauxImg');
+imgCiseaux.setAttribute('src', './img/object/Ciseaux/14503.png');
+
+ciseaux.appendChild(imgCiseaux);
+
+imgCiseaux.addEventListener("click", function() {
+    _inventory.AddObject(Level1.find(element => element.Id == "Ciseaux"));
+    ciseaux.style.display = "none";
+    _ciseaux = true
+    RefreshPage();
+
+});
+
+document.body.appendChild(ciseaux);
+    }
+}
+
+function Oreiller(){
+    const oreiller = document.createElement('oreiller');
+oreiller.setAttribute('id', 'oreiller');
+document.body.appendChild(oreiller);
+}
+
 
 function Tv(){
     const tv = document.createElement('tv');
 tv.setAttribute('id', 'tv');
 document.body.appendChild(tv);
-
-
 }

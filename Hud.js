@@ -1,5 +1,5 @@
 import {inventory} from "./Object.js";
-import { removeInHand } from "./script.js";
+import { removeInHand,changeMap } from "./script.js";
 
 
 export function createHud (){
@@ -36,7 +36,7 @@ for (let i = 1; i <= 3; i++) {
   const envDiv = document.createElement('div');
   envDiv.setAttribute('id', `env${i}`);
   envDiv.setAttribute('class', 'box');
-
+  envDiv.onclick = function() {changeMap(i);};
   const imgEnv = document.createElement('img');
   imgEnv.setAttribute('src', `/img/background/Level_1/Map/${i}.png`);
   imgEnv.setAttribute('class', 'imgEnv');

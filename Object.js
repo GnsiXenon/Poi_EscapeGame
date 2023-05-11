@@ -1,4 +1,5 @@
 import { PuzzleGame } from './PuzzleGame.js';
+import { RefreshPage } from './script.js';
 export class Object {
     Id =""
     Use = false; //boolean
@@ -68,7 +69,6 @@ export class Inventory{
          if (_Object1.ObjectCombine == _Object2.Id && _Object2.ObjectCombine == _Object1.Id){
             this.RemoveObject(_Object1);
             this.RemoveObject(_Object2);
-            console.log(Level1)
             for (let i = 0; i < Level1.length; i++) {
                 if (Level1[i].Id == _Object1.CombineDrop) {
                     this.AddObject(Level1[i]);
@@ -80,11 +80,9 @@ export class Inventory{
 }
 
     ItemUse(inHand,IdDiv){
-
         DivDynamic.forEach(element => {
             if (element == IdDiv) {
                 const _Object = this._Inventory.find(element => element.Id == inHand);
-                        console.log(_Object)
                         if (_Object.Use == true){
                             if (_Object.ObjectUse == IdDiv){
                                 this.RemoveObject(_Object);
@@ -92,7 +90,11 @@ export class Inventory{
                                     case "Télévision":
                                         alert("Vous avez gagné");
                                         break;
-                                    case "Oreiller":
+                                    case "oreiller":
+                                       alert("Vous avez trouvé une piece de puzzle");
+                                        document.getElementById("UseItem").style.display = "none";
+                                        inventory.AddObject(PieceDePuzzle);
+                                        RefreshPage();
                                         break;
                                     case "Maison":
                                         break;
@@ -136,14 +138,14 @@ export class Inventory{
     }
 }
 
-const DivDynamic = ["puzzleImg"]
+const DivDynamic = ["puzzleImg","oreiller"]
 
 const PieceDePuzzle = new Object("PieceDePuzzle","PieceDePuzzle", "Il doit manquer une piece de puzlle quelle que part",true, false, false,"", '', "", "puzzleImg","./img/object/PieceDePuzzle/768px-Puzzle.svg.png")
 const Télécommande_Off = new Object("Télécommande_Off","Télécommande", "Une télécommande qui nécésite quelque chose pour fonctionner ",false, false, true, "", "Télécommande_On", "Pile", "","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou2-removebg-preview.png") 
 const Télecommande = new Object("Télecommande","Télécommande", "Une télécommande pour la télevision ",false, true, false, "Télécommande_Off", "", "", "","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou-removebg-preview.png")
 const Télécommande_On = new Object("Télécommande_On","Télécommande", "Une télécommande qui fonctionne ",true, false, false, "", "", "", "Télévision","./img/object/telecommande/boyou-telecommande-de-remplacement-universelle-pou3-removebg-preview.png")
 const Pile =new Object("Pile","Pile", "Une pile de 9V",true, false, true, "", "Télécommande_On", "Télécommande_Off", "","./img/object/Pile/batteries-2109241_960_720.png")
-const Ciseaux = new Object("Ciseaux","Ciseaux", "Des ciseaux",true, false, false, "", "", "", "Oreiller","./img/object/Ciseaux/14503.png")
+const Ciseaux = new Object("Ciseaux","Ciseaux", "Des ciseaux",true, false, false, "", "", "", "oreiller","./img/object/Ciseaux/14503.png")
 const Clef = new Object("Clef","Clef", "Une clef",true, false, false, "", "", "", "Maison","./img/object/Clef/14080.png")
 export const Level1 = [
     PieceDePuzzle,
@@ -158,7 +160,7 @@ export const Level1 = [
 export const inventory = new Inventory();
 
 
-// inventory.AddObject(Pile);
+// inventory.AddObject(PieceDePuzzle);
 
 
 // Name Description Use Dismantle Combine DismantleDrop CombineDrop ObjectCombine ObjectUse
