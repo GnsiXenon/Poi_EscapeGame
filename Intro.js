@@ -12,7 +12,7 @@ paragraph.style.textAlign = "center";
 paragraph.style.marginTop = "200px";
 
 // create a new text node with the content you want to add
-const text = document.createTextNode('This is some text that will be added to the paragraph.');
+const text = document.createTextNode('Voici le Menu du jeux, Selectionner votre niveau');
 
 // add the text node to the paragraph element
 paragraph.appendChild(text);
