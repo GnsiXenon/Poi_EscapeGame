@@ -14,4 +14,5 @@ if (currentURL.indexOf("index.html") !== -1) {
 } else {
     // Code pour les autres pages (si nécessaire)
     console.log("Une autre page est chargée !");
+    Intro();
 }

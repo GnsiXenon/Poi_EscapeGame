@@ -16,7 +16,7 @@ mapDiv.setAttribute('id', 'map');
 
 // Créer l'img element pour la carte
 const mapImg = document.createElement('img');
-mapImg.setAttribute('src', './img/cartoon-map-euclidean-vector-tourist-map-vector-map-depositphotos-bgremover.png');
+mapImg.setAttribute('src', './img/map.png');
 mapImg.setAttribute('class', 'map-img');
 mapImg.setAttribute('alt', 'map');
 
@@ -34,11 +34,11 @@ openMapDiv.setAttribute('id', 'openMap');
 for (let i = 1; i <= 3; i++) {
   let text = ["House","Court","Warehouse"]
   const envDiv = document.createElement('div');
-  envDiv.setAttribute('id', `env${i}`);
+  envDiv.setAttribute('id', `env${i}a`);
   envDiv.setAttribute('class', 'box');
   envDiv.onclick = function() {changeMap(i);};
   const imgEnv = document.createElement('img');
-  imgEnv.setAttribute('src', `/img/background/Level_1/Map/${i}.png`);
+  imgEnv.setAttribute('src', `/img/background/Level_1/Map/${i}a.png`);
   imgEnv.setAttribute('class', 'imgEnv');
 
   const spanLoc = document.createElement('span');
@@ -63,7 +63,7 @@ const invDiv = document.createElement('div');
 invDiv.setAttribute('id', 'inventory');
 
 const invImg = document.createElement('img');
-invImg.setAttribute('src', './img/pngwing.com.png');
+invImg.setAttribute('src', './img/back.png');
 invImg.setAttribute('class', 'backpack');
 invImg.setAttribute('alt', 'sac');
 

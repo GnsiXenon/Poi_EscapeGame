@@ -33,7 +33,7 @@ const background = document.createElement('background');
 background.setAttribute('id', 'background');
 
 const imgBackground = document.createElement('img');
-imgBackground.setAttribute('src', './img/background/Level_1/House/1.png');
+imgBackground.setAttribute('src', './img/background/Level_1/House/Children-bedroom.png');
 imgBackground.setAttribute('id', 'backgroundImg');
 
 background.appendChild(imgBackground);
@@ -75,7 +75,7 @@ const puzzle = document.createElement('puzzle');
 puzzle.setAttribute('id', 'puzzle');
 
 const imgPuzzle = document.createElement('img');
-imgPuzzle.setAttribute('src', './img/arton7090-db331-removebg-preview.png');
+imgPuzzle.setAttribute('src', './img/puzzlePiece.png');
 imgPuzzle.setAttribute('id', 'puzzleImg');
 
 puzzle.appendChild(imgPuzzle);
@@ -125,7 +125,7 @@ const background = document.createElement('background');
 background.setAttribute('id', 'background');
 
 const imgBackground = document.createElement('img');
-imgBackground.setAttribute('src', './img/background/Level_1/House/2.png');
+imgBackground.setAttribute('src', './img/background/Level_1/House/Living-room.png');
 imgBackground.setAttribute('id', 'backgroundImg');
 
 background.appendChild(imgBackground);
